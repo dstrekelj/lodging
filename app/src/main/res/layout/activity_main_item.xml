@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+This is the layout for ActivityMain ListView items. It defines an image, a heading text, and two
+separate lines of body text.
+
+-->
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main_item"
     android:layout_width="match_parent"
@@ -20,7 +28,7 @@
         android:layout_toEndOf="@id/activity_main_item_image"
         android:layout_marginLeft="@dimen/activity_main_item_horizontal_margin"
         android:layout_marginStart="@dimen/activity_main_item_horizontal_margin"
-        android:textSize="@dimen/font_size_h2"
+        android:textSize="@dimen/text_size_h2"
         android:textStyle="bold"
         android:text="@string/activity_main_item_heading_text"/>
 

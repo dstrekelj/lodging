@@ -4,13 +4,15 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="activity_padding">20dp</dimen>
     <!-- Font sizes -->
-    <dimen name="font_size_h1">22sp</dimen>
-    <dimen name="font_size_h2">16sp</dimen>
-    <dimen name="font_size_body">15sp</dimen>
+    <dimen name="text_size_h1">22sp</dimen>
+    <dimen name="text_size_h2">16sp</dimen>
+    <dimen name="text_size_p">15sp</dimen>
     <!-- Main Activity -->
     <dimen name="activity_main_item_height">88dp</dimen>
     <dimen name="activity_main_item_image_size">40dp</dimen>
     <dimen name="activity_main_item_padding">16dp</dimen>
     <dimen name="activity_main_item_horizontal_margin">16dp</dimen>
     <dimen name="activity_main_item_vertical_margin">4dp</dimen>
+    <!-- Item Activity -->
+    <dimen name="activity_item_banner_height">188dp</dimen>
 </resources>
