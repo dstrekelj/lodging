@@ -1,0 +1,16 @@
+{"lodgings": [
+  {
+    "name": "Foo Bar",
+    "address": "127.0.0.1",
+    "po": "12345 Baz",
+    "rating": 5,
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae commodo lacus. Integer interdum, felis sit amet tempus gravida, arcu."
+  },
+  {
+    "name": "The Batcave",
+    "address": "???",
+    "po": "Gotham City",
+    "rating": 2,
+    "description": "Not a good place to spend the night."
+  }
+]}
