@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Smještaj</string>
-    <string name="activity_main_item_heading_text">Sample heading</string>
-    <string name="activity_main_item_body_text">Lorem ipsum dolor sit amet.</string>
+    <string name="lipsum_short">Lorem ipsum</string>
+    <string name="lipsum_newline">Lorem ipsum dolor sit amet.\nIn luctus maximus metus vitae mollis.</string>
 </resources>
