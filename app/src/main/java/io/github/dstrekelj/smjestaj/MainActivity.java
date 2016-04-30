@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -22,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
 
     ListView lvItems;
 
-    ArrayList<LodgingModel> lodgingModelArrayList;
     LodgingAdapter lodgingAdapter;
 
     LodgingsJsonReaderAsyncTask lodgingsJsonReaderAsyncTask;
@@ -33,9 +35,15 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
         setContentView(R.layout.activity_main);
 
         lvItems = (ListView) findViewById(R.id.activity_main_items);
+        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LodgingModel lodgingModel = (LodgingModel) lodgingAdapter.getItem(position);
+                Toast.makeText(MainActivity.this, "Selected: " + lodgingModel.getName(), Toast.LENGTH_SHORT).show();
+            }
+        });
 
-        lodgingModelArrayList = new ArrayList<LodgingModel>();
-        lodgingAdapter = new LodgingAdapter(lodgingModelArrayList);
+        lodgingAdapter = new LodgingAdapter(new ArrayList<LodgingModel>());
         lvItems.setAdapter(lodgingAdapter);
 
         lodgingsJsonReaderAsyncTask = new LodgingsJsonReaderAsyncTask(this);
@@ -50,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
     @Override
     public void onLodgingsJsonReaderPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
         Log.i("MainActivity", "onLodgingsJsonReaderPostExecute");
-        lodgingAdapter.add(lodgingModelArrayList.get(0));
-        lodgingAdapter.add(lodgingModelArrayList.get(1));
+        lodgingAdapter.addAll(lodgingModelArrayList);
     }
 }

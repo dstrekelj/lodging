@@ -68,13 +68,8 @@ public class LodgingAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public void add(LodgingModel lodgingModel) {
-        this.lodgingModelArrayList.add(lodgingModel);
-        this.notifyDataSetChanged();
-    }
-
-    public void remove(int position) {
-        this.lodgingModelArrayList.remove(position);
+    public void addAll(ArrayList<LodgingModel> lodgingModelArrayList) {
+        this.lodgingModelArrayList = lodgingModelArrayList;
         this.notifyDataSetChanged();
     }
 
