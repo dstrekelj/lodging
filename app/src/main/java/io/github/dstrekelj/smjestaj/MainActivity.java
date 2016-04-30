@@ -21,7 +21,7 @@ import io.github.dstrekelj.smjestaj.adapters.LodgingAdapter;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.LodgingsJsonReaderAsyncTask;
 
-public class MainActivity extends AppCompatActivity implements LodgingsJsonReaderAsyncTask.ILodgingsJsonReader {
+public class MainActivity extends AppCompatActivity implements LodgingsJsonReaderAsyncTask.ILodgingsJsonReader, AdapterView.OnItemClickListener {
 
     ListView lvItems;
 
@@ -35,13 +35,7 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
         setContentView(R.layout.activity_main);
 
         lvItems = (ListView) findViewById(R.id.activity_main_items);
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LodgingModel lodgingModel = (LodgingModel) lodgingAdapter.getItem(position);
-                Toast.makeText(MainActivity.this, "Selected: " + lodgingModel.getName(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        lvItems.setOnItemClickListener(this);
 
         lodgingAdapter = new LodgingAdapter(new ArrayList<LodgingModel>());
         lvItems.setAdapter(lodgingAdapter);
@@ -59,5 +53,16 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
     public void onLodgingsJsonReaderPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
         Log.i("MainActivity", "onLodgingsJsonReaderPostExecute");
         lodgingAdapter.addAll(lodgingModelArrayList);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        LodgingModel lodgingModel = (LodgingModel) parent.getItemAtPosition(position);
+        Gson gson = new Gson();
+        String json = gson.toJson(lodgingModel);
+        Log.d("MainActivity", "toJson: " + json);
+        Intent intent = new Intent(this, ItemActivity.class);
+        intent.putExtra(LodgingModel.ID, json);
+        startActivity(intent);
     }
 }

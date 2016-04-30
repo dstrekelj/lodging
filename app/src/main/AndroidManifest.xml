@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".activities.ItemActivity"
-            android:label="Test"
+            android:label="ItemActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
             <meta-data

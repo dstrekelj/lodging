@@ -6,6 +6,8 @@ import java.util.List;
  * Created by Domagoj on 29.4.2016..
  */
 public class LodgingModel {
+    public static String ID = "LodgingModel";
+
     private String name;
     private String address;
     private int postcode;
@@ -82,4 +84,6 @@ public class LodgingModel {
     public void setImages(List<String> images) {
         this.images = images;
     }
+
+    public String getFullAddress() { return address + "\n" + postcode + " " + city; }
 }

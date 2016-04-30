@@ -5,6 +5,7 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        android:id="@+id/fragment_item_detail_banner"
         android:layout_width="match_parent"
         android:layout_height="@dimen/activity_item_banner_height"
         android:scaleType="centerCrop"
@@ -17,6 +18,7 @@
         android:padding="@dimen/activity_padding">
 
         <RatingBar
+            android:id="@+id/fragment_item_detail_rating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="?android:attr/ratingBarStyleIndicator"
@@ -26,6 +28,7 @@
             android:stepSize="1"/>
 
         <TextView
+            android:id="@+id/fragment_item_detail_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -34,17 +37,14 @@
             android:text="Hotel Osijek"/>
 
         <TextView
+            android:id="@+id/fragment_item_detail_subheading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:text="Šamačka ulica 4"/>
+            android:text="Šamačka ulica 4\n31000 Osijek"/>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="31000 Osijek"/>
-
-        <TextView
+            android:id="@+id/fragment_item_detail_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_vertical_margin"

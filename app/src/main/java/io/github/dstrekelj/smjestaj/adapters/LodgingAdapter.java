@@ -60,10 +60,9 @@ public class LodgingAdapter extends BaseAdapter {
         }
 
         LodgingModel lodgingModel = this.lodgingModelArrayList.get(position);
-        String bodyText = lodgingModel.getAddress() + "\n" + lodgingModel.getPostcode() + " " + lodgingModel.getCity();
 
         itemViewHolder.tvItemHeading.setText(lodgingModel.getName());
-        itemViewHolder.tvItemBody.setText(bodyText);
+        itemViewHolder.tvItemBody.setText(lodgingModel.getFullAddress());
 
         return convertView;
     }
