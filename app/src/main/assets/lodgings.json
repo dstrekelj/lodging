@@ -1,20 +1,92 @@
 [
   {
-    "name": "Foo Bar",
-    "address": "127.0.0.1",
-    "postcode": 31000,
-    "city": "Osijek",
-    "rating": 5,
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae commodo lacus. Integer interdum, felis sit amet tempus gravida, arcu.",
-    "images": ["foobar1.jpg", "foobar2.jpg", "foobar3.jpg"]
+    "name": "Hotel Croatia",
+    "address": "Iza Palaca 1",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
   },
   {
-    "name": "The Batcave",
-    "address": "???",
-    "postcode": 12345,
-    "city": "Gotham City",
-    "rating": 1,
-    "description": "Not a good place to spend the night.",
-    "images": ["batcave1.jpg", "batcave2.jpg", "batcave3.jpg"]
+    "name": "Hotel Villa Bacchus",
+    "address": "Obala Sv. Nikole 89",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Dobro došli u Hotel Villa Bacchus obiteljski hotel sa 4 zvjezdice u Baškoj Vodi na Makarskoj rivijeri, gdje Vas toplo očekuju Mate i Mirjana Divić s obitelji i suradnicima.\n\nHotel je otvoren 2003, smješten u južnom dijelu mjesta Baška Voda samo 20 m od mora i prekrasne bijelo-šljunčane plaže Nikolina koja posjeduje Plavu zastavu. U Hotelu Villa Bachus na raspolaganju Vam stoji 30 stilski uređenih i udobnih soba i apartmana, CAPTAIN'S BAR, restaurant BACCHO s prekrasnom mediteranskom terasom, mali slatkovodni zatvoreni bazen, sauna i jacuzzi.\n\nZa vaše ljetovanje odaberite smještaj i doručak ili našu uslugu polupansiona à la carte. U hotelskom restoranu Baccho pronaći ćete bogat izbor domaćih i internacionalnih jela s naglaskom na mediteransku kuhinju. Kao dokaz da je riječ o kvalitetnom i priznatom hotelu služi nam i nagrada “KVALITETA ZA HRVATSKU“ koju je hotel Villa Bacchus dobio od hotelijera i restoratera, Hrvatske gospodarske komore i Hrvatske turističke Zajednice 2007. godine.",
+    "images": ["images/bacchus/img1.jpg", "images/bacchus/img2.jpg", "images/bacchus/img3.jpg", "images/bacchus/img4.jpg"]
+  },
+  {
+    "name": "Dorijini Dvori",
+    "address": "Put Kapelice 41",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "U mirnom djelu Baške Vode izvan buke i gužve, samo 450m od centra mjesta i glavne plaže, nalazi se novoizgrađeni turistički objekt \"Dorijini dvori\".\n\nObjekt se sastoji od: 18 vrhunski uređenih soba s pogledom na more i planinu Biokovo, vlastitog restorana s terasom za \"buffet\" doručak koji je uključen u cijenu smještaja, kuhinje i šanka, prostorije za gledanje TV-programa, lifta, praonice rublja, parkinga, garaže i dr.\n\nPosebna pogodnost su dodatni popusti za djecu.",
+    "images": []
+  },
+  {
+    "name": "Aparthotel Milenij",
+    "address": "Šetalište Kralja Petra Krešimira IV 5",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Hotel Horizont",
+    "address": "Ulica Stjepana Radića 2",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Hotel Slavija",
+    "address": "Obala Sv. Nikole 71",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Pansion Palac",
+    "address": "Obala Sv. Nikole 27",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 3,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Putnik Apartments",
+    "address": "Naputica 14",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 3,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Vila Adrijana",
+    "address": "Put Topica 6",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 3,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
+  },
+  {
+    "name": "Ivana House Apartment",
+    "address": "Put Kapelica bb",
+    "postcode": 21320,
+    "city": "Baška Voda",
+    "rating": 4,
+    "description": "Lorem ipsum dolor sit amet.",
+    "images": []
   }
 ]
