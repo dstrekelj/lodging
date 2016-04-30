@@ -21,6 +21,7 @@
     </ScrollView>
     
     <LinearLayout
+        android:id="@+id/activity_item_gallery"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/activity_padding"
@@ -29,26 +30,26 @@
         android:layout_weight="0">
         
         <ImageView
+            android:id="@+id/activity_item_gallery_item1"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:src="@drawable/hotel_osijek"
             android:scaleType="centerCrop"/>
 
         <ImageView
+            android:id="@+id/activity_item_gallery_item2"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:layout_marginLeft="@dimen/activity_padding"
-            android:layout_marginRight="@dimen/activity_padding"
-            android:src="@drawable/hotel_osijek"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:scaleType="centerCrop"/>
 
         <ImageView
+            android:id="@+id/activity_item_gallery_item3"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="1"
-            android:src="@drawable/hotel_osijek"
             android:scaleType="centerCrop"/>
         
     </LinearLayout>

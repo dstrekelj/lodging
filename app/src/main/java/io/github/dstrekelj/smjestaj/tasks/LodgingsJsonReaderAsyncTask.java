@@ -49,6 +49,7 @@ public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayLi
 
             jsonReader.endArray();
             jsonReader.close();
+            inputStream.close();
 
             inputStream = null;
             inputStreamReader = null;

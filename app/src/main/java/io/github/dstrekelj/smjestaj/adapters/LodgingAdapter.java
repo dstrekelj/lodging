@@ -1,6 +1,8 @@
 package io.github.dstrekelj.smjestaj.adapters;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,10 +10,14 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import io.github.dstrekelj.smjestaj.R;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
+import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
+import io.github.dstrekelj.smjestaj.utils.BitmapUtils;
 
 /**
  * Created by Domagoj on 29.4.2016..
@@ -62,6 +68,12 @@ public class LodgingAdapter extends BaseAdapter {
 
         itemViewHolder.tvItemHeading.setText(lodgingModel.getName());
         itemViewHolder.tvItemBody.setText(lodgingModel.getFullAddress());
+
+        if (lodgingModel.getBanner() == null) {
+            itemViewHolder.ivItemImage.setImageBitmap(null);
+        } else {
+            new ImageLoaderAsyncTask(context.getAssets(), itemViewHolder.ivItemImage).execute(lodgingModel.getBanner());
+        }
 
         return convertView;
     }

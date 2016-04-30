@@ -86,4 +86,6 @@ public class LodgingModel {
     }
 
     public String getFullAddress() { return address + "\n" + postcode + " " + city; }
+
+    public String getBanner() { return images.isEmpty() ? null : images.get(0); }
 }

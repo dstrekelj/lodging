@@ -6,7 +6,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/hotel_croatia/img1.jpg"]
   },
   {
     "name": "Hotel Villa Bacchus",
@@ -15,7 +15,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Dobro došli u Hotel Villa Bacchus obiteljski hotel sa 4 zvjezdice u Baškoj Vodi na Makarskoj rivijeri, gdje Vas toplo očekuju Mate i Mirjana Divić s obitelji i suradnicima.\n\nHotel je otvoren 2003, smješten u južnom dijelu mjesta Baška Voda samo 20 m od mora i prekrasne bijelo-šljunčane plaže Nikolina koja posjeduje Plavu zastavu. U Hotelu Villa Bachus na raspolaganju Vam stoji 30 stilski uređenih i udobnih soba i apartmana, CAPTAIN'S BAR, restaurant BACCHO s prekrasnom mediteranskom terasom, mali slatkovodni zatvoreni bazen, sauna i jacuzzi.\n\nZa vaše ljetovanje odaberite smještaj i doručak ili našu uslugu polupansiona à la carte. U hotelskom restoranu Baccho pronaći ćete bogat izbor domaćih i internacionalnih jela s naglaskom na mediteransku kuhinju. Kao dokaz da je riječ o kvalitetnom i priznatom hotelu služi nam i nagrada “KVALITETA ZA HRVATSKU“ koju je hotel Villa Bacchus dobio od hotelijera i restoratera, Hrvatske gospodarske komore i Hrvatske turističke Zajednice 2007. godine.",
-    "images": ["images/bacchus/img1.jpg", "images/bacchus/img2.jpg", "images/bacchus/img3.jpg", "images/bacchus/img4.jpg"]
+    "images": ["images/hotel_villa_bacchus/img1.jpg", "images/hotel_villa_bacchus/img2.jpg", "images/hotel_villa_bacchus/img3.jpg", "images/hotel_villa_bacchus/img4.jpg"]
   },
   {
     "name": "Dorijini Dvori",
@@ -24,7 +24,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "U mirnom djelu Baške Vode izvan buke i gužve, samo 450m od centra mjesta i glavne plaže, nalazi se novoizgrađeni turistički objekt \"Dorijini dvori\".\n\nObjekt se sastoji od: 18 vrhunski uređenih soba s pogledom na more i planinu Biokovo, vlastitog restorana s terasom za \"buffet\" doručak koji je uključen u cijenu smještaja, kuhinje i šanka, prostorije za gledanje TV-programa, lifta, praonice rublja, parkinga, garaže i dr.\n\nPosebna pogodnost su dodatni popusti za djecu.",
-    "images": []
+    "images": ["images/dorijini_dvori/img1.jpg"]
   },
   {
     "name": "Aparthotel Milenij",

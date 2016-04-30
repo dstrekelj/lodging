@@ -18,7 +18,7 @@ separate lines of body text.
         android:id="@+id/activity_main_item_image"
         android:layout_width="@dimen/activity_main_item_image_size"
         android:layout_height="@dimen/activity_main_item_image_size"
-        android:src="@android:drawable/sym_def_app_icon"/>
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/activity_main_item_heading"
