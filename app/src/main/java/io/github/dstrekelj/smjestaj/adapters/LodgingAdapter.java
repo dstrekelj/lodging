@@ -41,7 +41,6 @@ public class LodgingAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d("LodgingAdapter", "getView");
         ItemViewHolder itemViewHolder;
         Context context = parent.getContext();
 

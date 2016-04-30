@@ -42,11 +42,6 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
 
         lodgingsJsonReaderAsyncTask = new LodgingsJsonReaderAsyncTask(this);
         lodgingsJsonReaderAsyncTask.execute("lodgings.json");
-
-        /*
-        Intent i = new Intent(this, ItemActivity.class);
-        startActivity(i);
-        */
     }
 
     @Override
