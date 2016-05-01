@@ -1,7 +1,15 @@
 package io.github.dstrekelj.smjestaj.activities;
 
+import android.content.Context;
+import android.content.Intent;
+import android.media.MediaScannerConnection;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.ContactsContract;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -9,9 +17,13 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 
+import java.io.File;
+import java.io.IOException;
+
 import io.github.dstrekelj.smjestaj.R;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
+import io.github.dstrekelj.smjestaj.utils.StorageUtil;
 
 public class ItemActivity extends AppCompatActivity {
     public static final String TAG = ItemActivity.class.getSimpleName();
@@ -31,11 +43,13 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
-        ivBanner = (ImageView) findViewById(R.id.fragment_item_detail_banner);
-        rbRating = (RatingBar) findViewById(R.id.fragment_item_detail_rating);
-        tvHeading = (TextView) findViewById(R.id.fragment_item_detail_heading);
-        tvSubheading = (TextView) findViewById(R.id.fragment_item_detail_subheading);
-        tvBody = (TextView) findViewById(R.id.fragment_item_detail_body);
+        Log.d(TAG, Environment.getDataDirectory().toString());
+
+        ivBanner = (ImageView) findViewById(R.id.acivity_item_banner);
+        rbRating = (RatingBar) findViewById(R.id.activity_item_rating);
+        tvHeading = (TextView) findViewById(R.id.activity_item_heading);
+        tvSubheading = (TextView) findViewById(R.id.activity_item_subheading);
+        tvBody = (TextView) findViewById(R.id.activity_item_body);
 
         ivGalleryItem1 = (ImageView) findViewById(R.id.activity_item_gallery_item1);
         ivGalleryItem2 = (ImageView) findViewById(R.id.activity_item_gallery_item2);
@@ -51,15 +65,75 @@ public class ItemActivity extends AppCompatActivity {
         new ImageLoaderAsyncTask(getAssets(), ivGalleryItem2).execute(lodgingModel.getImages().get(2));
         new ImageLoaderAsyncTask(getAssets(), ivGalleryItem3).execute(lodgingModel.getImages().get(3));
 
+        try {
+            StorageUtil.create(this, lodgingModel.getImages().get(0), "img0.jpg");
+            StorageUtil.create(this, lodgingModel.getImages().get(1), "img1.jpg");
+            StorageUtil.create(this, lodgingModel.getImages().get(2), "img2.jpg");
+            StorageUtil.create(this, lodgingModel.getImages().get(3), "img3.jpg");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        Log.d(TAG, getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString());
+
         rbRating.setRating(lodgingModel.getRating());
         tvHeading.setText(lodgingModel.getName());
         tvSubheading.setText(lodgingModel.getFullAddress());
         tvBody.setText(lodgingModel.getDescription());
 
+        File folder = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath());
+        final File[] files = folder.listFiles();
+
+        ivBanner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SingleMediaScanner(ItemActivity.this, files[0]);
+            }
+        });
+
         ivGalleryItem1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                new SingleMediaScanner(ItemActivity.this, files[1]);
             }
         });
+
+        ivGalleryItem2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SingleMediaScanner(ItemActivity.this, files[2]);
+            }
+        });
+
+        ivGalleryItem3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new SingleMediaScanner(ItemActivity.this, files[3]);
+            }
+        });
+    }
+
+    private class SingleMediaScanner implements MediaScannerConnection.MediaScannerConnectionClient {
+        private MediaScannerConnection mediaScannerConnection;
+        private File file;
+
+        public SingleMediaScanner(Context context, File file) {
+            this.file = file;
+            this.mediaScannerConnection = new MediaScannerConnection(context, this);
+            this.mediaScannerConnection.connect();
+        }
+
+        @Override
+        public void onMediaScannerConnected() {
+            mediaScannerConnection.scanFile(file.getAbsolutePath(), null);
+        }
+
+        @Override
+        public void onScanCompleted(String path, Uri uri) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(uri);
+            startActivity(intent);
+            mediaScannerConnection.disconnect();
+        }
     }
 }
