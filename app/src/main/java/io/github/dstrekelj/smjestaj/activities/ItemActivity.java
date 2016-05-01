@@ -1,28 +1,20 @@
 package io.github.dstrekelj.smjestaj.activities;
 
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
 
-import java.io.File;
-import java.io.IOException;
-
 import io.github.dstrekelj.smjestaj.R;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
-import io.github.dstrekelj.smjestaj.utils.AssetsProvider;
 
 public class ItemActivity extends AppCompatActivity {
+    public static final String TAG = ItemActivity.class.getSimpleName();
 
     ImageView ivBanner;
     RatingBar rbRating;
@@ -50,7 +42,7 @@ public class ItemActivity extends AppCompatActivity {
         ivGalleryItem3 = (ImageView) findViewById(R.id.activity_item_gallery_item3);
 
         Gson gson = new Gson();
-        final LodgingModel lodgingModel = gson.fromJson(getIntent().getStringExtra(LodgingModel.ID), LodgingModel.class);
+        LodgingModel lodgingModel = gson.fromJson(getIntent().getStringExtra(LodgingModel.TAG), LodgingModel.class);
 
         getSupportActionBar().setTitle(lodgingModel.getName());
 

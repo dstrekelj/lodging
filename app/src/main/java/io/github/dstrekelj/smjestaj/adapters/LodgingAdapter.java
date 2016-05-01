@@ -1,8 +1,6 @@
 package io.github.dstrekelj.smjestaj.adapters;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,44 +8,74 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import io.github.dstrekelj.smjestaj.R;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
-import io.github.dstrekelj.smjestaj.utils.BitmapUtils;
 
 /**
- * Created by Domagoj on 29.4.2016..
+ * Adapter for `LodgingModel`.
  */
 public class LodgingAdapter extends BaseAdapter {
+    public static final String TAG = LodgingAdapter.class.getSimpleName();
 
     ArrayList<LodgingModel> lodgingModelArrayList;
 
+    /**
+     * Constructor.
+     *
+     * @param lodgingModelArrayList List of lodgings
+     */
     public LodgingAdapter(ArrayList<LodgingModel> lodgingModelArrayList) {
         this.lodgingModelArrayList = lodgingModelArrayList;
     }
 
+    /**
+     * Gets number of elements.
+     *
+     * @return Element count
+     */
     @Override
     public int getCount() {
         return lodgingModelArrayList.size();
     }
 
+    /**
+     * Gets item as `LodgingModel` object.
+     *
+     * @param position  Item position
+     * @return          Item object
+     */
     @Override
     public Object getItem(int position) {
         return lodgingModelArrayList.get(position);
     }
 
+    /**
+     * Gets item ID (currently returns passed `position` argument).
+     *
+     * @param position  Item position
+     * @return          Item ID
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Prepares the view for an item.
+     *
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ItemViewHolder itemViewHolder;
+        Log.d(TAG, "getView: " + position);
+
+        ItemViewHolder itemViewHolder = null;
         Context context = parent.getContext();
 
         if (convertView == null) {
@@ -69,20 +97,33 @@ public class LodgingAdapter extends BaseAdapter {
         itemViewHolder.tvItemHeading.setText(lodgingModel.getName());
         itemViewHolder.tvItemBody.setText(lodgingModel.getFullAddress());
 
+        // If no banner image asset can be found, set it to null
         if (lodgingModel.getBanner() == null) {
             itemViewHolder.ivItemImage.setImageBitmap(null);
         } else {
+            // Banner images are used as thumbnails in the list view. To discern between different
+            // list entries we set a tag for the `ImageLoaderAsyncTask` to use.
+            itemViewHolder.ivItemImage.setTag(lodgingModel.getBanner());
             new ImageLoaderAsyncTask(context.getAssets(), itemViewHolder.ivItemImage).execute(lodgingModel.getBanner());
         }
 
         return convertView;
     }
 
+    /**
+     * Adds all items from provided list to the list behind the adapter, removing all previously
+     * present entries.
+     *
+     * @param lodgingModelArrayList List of lodgings
+     */
     public void addAll(ArrayList<LodgingModel> lodgingModelArrayList) {
         this.lodgingModelArrayList = lodgingModelArrayList;
         this.notifyDataSetChanged();
     }
 
+    /**
+     * Represents the views `activity_main_item.xml` layout.
+     */
     static class ItemViewHolder {
         private ImageView ivItemImage;
         private TextView tvItemHeading;

@@ -3,10 +3,10 @@ package io.github.dstrekelj.smjestaj.models;
 import java.util.List;
 
 /**
- * Created by Domagoj on 29.4.2016..
+ * Represents an entry in `assets/lodgings.json`.
  */
 public class LodgingModel {
-    public static String ID = "LodgingModel";
+    public static final String TAG = LodgingModel.class.getSimpleName();
 
     private String name;
     private String address;
@@ -16,8 +16,7 @@ public class LodgingModel {
     private String description;
     private List<String> images;
 
-    public LodgingModel() {
-    }
+    public LodgingModel() {}
 
     public LodgingModel(String name, String address, int postcode, String city, int rating, String description, List<String> images) {
         this.name = name;
@@ -85,7 +84,16 @@ public class LodgingModel {
         this.images = images;
     }
 
+    /**
+     * Formats `address`, `postcode`, and `city` into a full address conforming to Croatian
+     * national standard.
+     * @return String formatted full address
+     */
     public String getFullAddress() { return address + "\n" + postcode + " " + city; }
 
+    /**
+     * Returns the first image asset path in the `images` array as a banner for `ItemActivity`.
+     * @return String path to first image
+     */
     public String getBanner() { return images.isEmpty() ? null : images.get(0); }
 }

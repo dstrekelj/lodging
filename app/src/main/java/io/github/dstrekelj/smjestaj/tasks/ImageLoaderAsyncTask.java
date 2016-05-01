@@ -4,52 +4,94 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 
 import java.io.IOException;
 import java.io.InputStream;
 
-import io.github.dstrekelj.smjestaj.utils.BitmapUtils;
-
 /**
- * Created by Domagoj on 30.4.2016..
+ * Performs asynchronous loading of an image from the assets folder into an `ImageView`.
  */
 public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
+    public static final String TAG = ImageLoaderAsyncTask.class.getSimpleName();
 
     AssetManager assetManager;
     ImageView imageView;
+    String tag;
 
+    /**
+     * Constructor. If the view provides a tag it will be used to find the correct view when
+     * setting the bitmap.
+     *
+     * @param assetManager  Current context's `AssetManager`
+     * @param imageView     Affected `ImageView`
+     */
     public ImageLoaderAsyncTask(AssetManager assetManager, ImageView imageView) {
-        Log.d("ImageLoader", "constructor");
+        Log.d(TAG, "constructor");
+
         this.assetManager = assetManager;
         this.imageView = imageView;
+
+        if (imageView.getTag() != null) {
+            this.tag = imageView.getTag().toString();
+        }
     }
 
+    /**
+     * Opens the image as an `InputStream` and decodes the stream into a `Bitmap`. Throws exception
+     * if asset couldn't be opened.
+     *
+     * @param params    `String` file path
+     * @return          `Bitmap` image
+     */
     @Override
     protected Bitmap doInBackground(String... params) {
-        Log.d("ImageLoader", "doInBackground - " + params[0]);
+        Log.d(TAG, "doInBackground - " + params[0]);
 
         Bitmap bitmap = null;
+        InputStream inputStream = null;
 
         try {
-            InputStream inputStream = assetManager.open(params[0]);
+            inputStream = assetManager.open(params[0]);
             BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
+            // TODO: Actually calculate the appropriate input sample size
             bitmapFactoryOptions.inSampleSize = 1;
             bitmap = BitmapFactory.decodeStream(inputStream, null, bitmapFactoryOptions);
-            inputStream.close();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
+
+        // Release reference to asset manager
+        this.assetManager = null;
 
         return bitmap;
     }
 
+    /**
+     * Sets image of `ImageView` to the created `Bitmap`.
+     *
+     * @param bitmap    `Bitmap` image
+     */
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        Log.d("ImageLoader", "onPostExecute");
-        imageView.setImageBitmap(bitmap);
+        Log.d(TAG, "onPostExecute");
+
+        // Set image bitmap only if bitmap exists, and tags match or don't exist. This is done so
+        // that this task can be used to load images asynchronously outside of a ListView.
+        if (bitmap != null && (imageView.getTag() == null || (imageView.getTag() != null && imageView.getTag().toString().equals(tag)))) {
+            imageView.setImageBitmap(bitmap);
+        }
+
+        // Release reference to image view
         this.imageView = null;
     }
 }

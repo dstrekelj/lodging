@@ -21,16 +21,20 @@ import io.github.dstrekelj.smjestaj.adapters.LodgingAdapter;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.LodgingsJsonReaderAsyncTask;
 
+/**
+ * Application entry point. Lists items (lodgings) from `assets/lodgings.json` in a `ListView`.
+ */
 public class MainActivity extends AppCompatActivity implements LodgingsJsonReaderAsyncTask.ILodgingsJsonReader, AdapterView.OnItemClickListener {
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     ListView lvItems;
-
     LodgingAdapter lodgingAdapter;
-
     LodgingsJsonReaderAsyncTask lodgingsJsonReaderAsyncTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(TAG, "onCreate");
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -46,18 +50,22 @@ public class MainActivity extends AppCompatActivity implements LodgingsJsonReade
 
     @Override
     public void onLodgingsJsonReaderPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
-        Log.i("MainActivity", "onLodgingsJsonReaderPostExecute");
+        Log.d(TAG, "onLodgingsJsonReaderPostExecute");
+
         lodgingAdapter.addAll(lodgingModelArrayList);
     }
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Log.d(TAG, "onItemClick");
+
         LodgingModel lodgingModel = (LodgingModel) parent.getItemAtPosition(position);
-        Gson gson = new Gson();
-        String json = gson.toJson(lodgingModel);
-        Log.d("MainActivity", "toJson: " + json);
+        String json = new Gson().toJson(lodgingModel);
+
+        Log.d(TAG, "Sending: " + json);
+
         Intent intent = new Intent(this, ItemActivity.class);
-        intent.putExtra(LodgingModel.ID, json);
+        intent.putExtra(LodgingModel.TAG, json);
         startActivity(intent);
     }
 }
