@@ -6,7 +6,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": ["images/hotel_croatia/img1.jpg"]
+    "images": ["images/hotel_croatia/img1.jpg", "images/hotel_croatia/img2.jpg", "images/hotel_croatia/img3.jpg", "images/hotel_croatia/img4.jpg"]
   },
   {
     "name": "Hotel Villa Bacchus",
@@ -24,7 +24,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "U mirnom djelu Baške Vode izvan buke i gužve, samo 450m od centra mjesta i glavne plaže, nalazi se novoizgrađeni turistički objekt \"Dorijini dvori\".\n\nObjekt se sastoji od: 18 vrhunski uređenih soba s pogledom na more i planinu Biokovo, vlastitog restorana s terasom za \"buffet\" doručak koji je uključen u cijenu smještaja, kuhinje i šanka, prostorije za gledanje TV-programa, lifta, praonice rublja, parkinga, garaže i dr.\n\nPosebna pogodnost su dodatni popusti za djecu.",
-    "images": ["images/dorijini_dvori/img1.jpg"]
+    "images": ["images/dorijini_dvori/img1.jpg", "images/dorijini_dvori/img2.jpg", "images/dorijini_dvori/img3.jpg", "images/dorijini_dvori/img4.jpg"]
   },
   {
     "name": "Aparthotel Milenij",
@@ -33,7 +33,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/aparthotel_milenij/img1.jpg", "images/aparthotel_milenij/img2.jpg", "images/aparthotel_milenij/img3.jpg", "images/aparthotel_milenij/img4.jpg"]
   },
   {
     "name": "Hotel Horizont",
@@ -42,7 +42,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/hotel_horizont/img1.jpg", "images/hotel_horizont/img2.jpg", "images/hotel_horizont/img3.jpg", "images/hotel_horizont/img4.jpg"]
   },
   {
     "name": "Hotel Slavija",
@@ -51,7 +51,7 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/hotel_slavija/img1.jpg", "images/hotel_slavija/img2.jpg", "images/hotel_slavija/img3.jpg", "images/hotel_slavija/img4.jpg"]
   },
   {
     "name": "Pansion Palac",
@@ -60,7 +60,7 @@
     "city": "Baška Voda",
     "rating": 3,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/pansion_palac/img1.jpg", "images/pansion_palac/img2.jpg", "images/pansion_palac/img3.jpg", "images/pansion_palac/img4.jpg"]
   },
   {
     "name": "Putnik Apartments",
@@ -69,7 +69,7 @@
     "city": "Baška Voda",
     "rating": 3,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/putnik_apartments/img1.jpg", "images/putnik_apartments/img2.jpg", "images/putnik_apartments/img3.jpg", "images/putnik_apartments/img4.jpg"]
   },
   {
     "name": "Vila Adrijana",
@@ -78,7 +78,7 @@
     "city": "Baška Voda",
     "rating": 3,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/vila_adrijana/img1.jpg", "images/vila_adrijana/img2.jpg", "images/vila_adrijana/img3.jpg", "images/vila_adrijana/img4.jpg"]
   },
   {
     "name": "Ivana House Apartment",
@@ -87,6 +87,6 @@
     "city": "Baška Voda",
     "rating": 4,
     "description": "Lorem ipsum dolor sit amet.",
-    "images": []
+    "images": ["images/ivana_house_apartment/img1.jpg", "images/ivana_house_apartment/img2.jpg", "images/ivana_house_apartment/img3.jpg", "images/ivana_house_apartment/img4.jpg"]
   }
 ]
