@@ -11,4 +11,7 @@
         <item name="android:textSize">@dimen/text_size_p</item>
     </style>
 
+    <style name="RatingBar" parent="Base.Widget.AppCompat.RatingBar.Indicator">
+    </style>
+
 </resources>

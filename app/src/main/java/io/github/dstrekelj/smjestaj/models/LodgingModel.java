@@ -96,4 +96,6 @@ public class LodgingModel {
      * @return String path to first image
      */
     public String getBanner() { return images.isEmpty() ? null : images.get(0); }
+
+    public List<String> getGallery() { return images.size() < 4 ? null : images.subList(1, 4); }
 }

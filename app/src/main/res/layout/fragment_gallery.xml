@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/activity_padding"
+    android:columnWidth="@dimen/fragment_gallery_item_size"
+    android:stretchMode="spacingWidthUniform"
+    android:numColumns="3"
+    android:gravity="center"
+    android:verticalSpacing="@dimen/activity_padding"
+    android:clickable="true"
+    tools:listitem="@layout/fragment_gallery_item">
+
+</GridView>
