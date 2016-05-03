@@ -18,10 +18,20 @@ import io.github.dstrekelj.smjestaj.models.LodgingModel;
 /**
  * Performs asynchronous reading of JSON file that contains an array of `LodgingModel` data.
  */
-public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayList<LodgingModel>>{
+public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayList<LodgingModel>> {
+    /**
+     * Shorthand for the class name. Useful for logging.
+     */
     public static final String TAG = LodgingsJsonReaderAsyncTask.class.getSimpleName();
 
+    /**
+     * Reference to context's asset manager.
+     */
     AssetManager assetManager;
+
+    /**
+     * Reference to context (activity).
+     */
     ILodgingsJsonReader activity;
 
     /**
@@ -47,8 +57,6 @@ public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayLi
      */
     @Override
     protected ArrayList<LodgingModel> doInBackground(String... params) {
-        Log.d(TAG, "doInBackground: " + params[0]);
-
         ArrayList<LodgingModel> lodgingModelArrayList = new ArrayList<LodgingModel>();
 
         InputStream inputStream = null;
@@ -112,8 +120,6 @@ public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayLi
      */
     @Override
     protected void onPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
-        Log.d(TAG, "onPostExecute");
-
         activity.onLodgingsJsonReaderPostExecute(lodgingModelArrayList);
         // Release reference to activity
         this.activity = null;

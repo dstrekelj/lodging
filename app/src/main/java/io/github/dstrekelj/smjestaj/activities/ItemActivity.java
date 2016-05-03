@@ -20,17 +20,53 @@ import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
 import io.github.dstrekelj.smjestaj.utils.SingleMediaScanner;
 import io.github.dstrekelj.smjestaj.utils.StorageUtil;
 
+/**
+ * Provides a detailed view of selected lodging item.
+ */
 public class ItemActivity extends AppCompatActivity {
+    /**
+     * Shorthand for the class name. Useful for logging.
+     */
     public static final String TAG = ItemActivity.class.getSimpleName();
 
+    /**
+     * Banner. Intended for first lodging image.
+     */
     ImageView ivBanner;
+
+    /**
+     * Rating bar. Intended for lodging rating.
+     */
     RatingBar rbRating;
+
+    /**
+     * Heading. Intended for lodging name.
+     */
     TextView tvHeading;
+
+    /**
+     * Subheading. Intended for lodging full address.
+     */
     TextView tvSubheading;
+
+    /**
+     * Body. Intended for lodging description.
+     */
     TextView tvBody;
 
+    /**
+     * Gallery item #1. Intended for lodging image #2.
+     */
     ImageView ivGalleryItem1;
+
+    /**
+     * Gallery item #2. Intended for lodging image #3.
+     */
     ImageView ivGalleryItem2;
+
+    /**
+     * Gallery item #3. Intended for lodging image #4.
+     */
     ImageView ivGalleryItem3;
 
     @Override
@@ -38,47 +74,51 @@ public class ItemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
-        //Log.d(TAG, Environment.getDataDirectory().toString());
+        this.ivBanner = (ImageView) findViewById(R.id.acivity_item_banner);
+        this.rbRating = (RatingBar) findViewById(R.id.activity_item_rating);
+        this.tvHeading = (TextView) findViewById(R.id.activity_item_heading);
+        this.tvSubheading = (TextView) findViewById(R.id.activity_item_subheading);
+        this.tvBody = (TextView) findViewById(R.id.activity_item_body);
 
-        ivBanner = (ImageView) findViewById(R.id.acivity_item_banner);
-        rbRating = (RatingBar) findViewById(R.id.activity_item_rating);
-        tvHeading = (TextView) findViewById(R.id.activity_item_heading);
-        tvSubheading = (TextView) findViewById(R.id.activity_item_subheading);
-        tvBody = (TextView) findViewById(R.id.activity_item_body);
-
-        ivGalleryItem1 = (ImageView) findViewById(R.id.activity_item_gallery_item1);
-        ivGalleryItem2 = (ImageView) findViewById(R.id.activity_item_gallery_item2);
-        ivGalleryItem3 = (ImageView) findViewById(R.id.activity_item_gallery_item3);
+        this.ivGalleryItem1 = (ImageView) findViewById(R.id.activity_item_gallery_item1);
+        this.ivGalleryItem2 = (ImageView) findViewById(R.id.activity_item_gallery_item2);
+        this.ivGalleryItem3 = (ImageView) findViewById(R.id.activity_item_gallery_item3);
 
         Gson gson = new Gson();
+        // Retrieving the item data sent from `MainActivity`
         LodgingModel lodgingModel = gson.fromJson(getIntent().getStringExtra(LodgingModel.TAG), LodgingModel.class);
 
+        // Update activity name in action bar
         getSupportActionBar().setTitle(lodgingModel.getName());
 
+        this.rbRating.setRating(lodgingModel.getRating());
+        this.tvHeading.setText(lodgingModel.getName());
+        this.tvSubheading.setText(lodgingModel.getFullAddress());
+        this.tvBody.setText(lodgingModel.getDescription());
+
+        // TODO: Look into a more scalable gallery solution (remember: `GridView` did not work out)
+
         if (lodgingModel.getBanner() != null) {
-            new ImageLoaderAsyncTask(getAssets(), ivBanner).execute(lodgingModel.getBanner());
+            new ImageLoaderAsyncTask(getAssets(), this.ivBanner).execute(lodgingModel.getBanner());
+
+            // Store image in external file directory so that the media scanner can scan it
+            StorageUtil.create(this, lodgingModel.getImages().get(0), "img0.jpg");
         }
 
         if (lodgingModel.getGallery() != null) {
-            new ImageLoaderAsyncTask(getAssets(), ivGalleryItem1).execute(lodgingModel.getGallery().get(0));
-            new ImageLoaderAsyncTask(getAssets(), ivGalleryItem2).execute(lodgingModel.getGallery().get(1));
-            new ImageLoaderAsyncTask(getAssets(), ivGalleryItem3).execute(lodgingModel.getGallery().get(2));
-            try {
-                StorageUtil.create(this, lodgingModel.getImages().get(0), "img0.jpg");
-                StorageUtil.create(this, lodgingModel.getImages().get(1), "img1.jpg");
-                StorageUtil.create(this, lodgingModel.getImages().get(2), "img2.jpg");
-                StorageUtil.create(this, lodgingModel.getImages().get(3), "img3.jpg");
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            new ImageLoaderAsyncTask(getAssets(), this.ivGalleryItem1).execute(lodgingModel.getGallery().get(0));
+            new ImageLoaderAsyncTask(getAssets(), this.ivGalleryItem2).execute(lodgingModel.getGallery().get(1));
+            new ImageLoaderAsyncTask(getAssets(), this.ivGalleryItem3).execute(lodgingModel.getGallery().get(2));
+
+            // Store images in external file directory so that the media scanner can scan them
+            StorageUtil.create(this, lodgingModel.getImages().get(1), "img1.jpg");
+            StorageUtil.create(this, lodgingModel.getImages().get(2), "img2.jpg");
+            StorageUtil.create(this, lodgingModel.getImages().get(3), "img3.jpg");
         }
 
-        Log.d(TAG, getExternalFilesDir(Environment.DIRECTORY_PICTURES).toString());
+        // TODO: Optimise the whole "copy-to-storage, scan, and load" process?
 
-        rbRating.setRating(lodgingModel.getRating());
-        tvHeading.setText(lodgingModel.getName());
-        tvSubheading.setText(lodgingModel.getFullAddress());
-        tvBody.setText(lodgingModel.getDescription());
+        // Get list of files in external files directory and run the media scanner on image click
 
         File folder = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath());
         final File[] files = folder.listFiles();

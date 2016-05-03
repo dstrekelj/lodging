@@ -7,14 +7,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 import io.github.dstrekelj.smjestaj.activities.ItemActivity;
 import io.github.dstrekelj.smjestaj.adapters.LodgingAdapter;
@@ -25,47 +21,64 @@ import io.github.dstrekelj.smjestaj.tasks.LodgingsJsonReaderAsyncTask;
  * Application entry point. Lists items (lodgings) from `assets/lodgings.json` in a `ListView`.
  */
 public class MainActivity extends AppCompatActivity implements LodgingsJsonReaderAsyncTask.ILodgingsJsonReader, AdapterView.OnItemClickListener {
+    /**
+     * Shorthand for the class name. Useful for logging.
+     */
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    ListView lvItems;
-    LodgingAdapter lodgingAdapter;
-    LodgingsJsonReaderAsyncTask lodgingsJsonReaderAsyncTask;
+    /**
+     * Lodging items list.
+     */
+    private ListView lvItems;
+
+    /**
+     * Lodging item list adapter.
+     */
+    private LodgingAdapter lodgingAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "onCreate");
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lvItems = (ListView) findViewById(R.id.activity_main_items);
-        lvItems.setOnItemClickListener(this);
+        this.lvItems = (ListView) findViewById(R.id.activity_main_items);
+        this.lvItems.setOnItemClickListener(this);
 
-        lodgingAdapter = new LodgingAdapter(new ArrayList<LodgingModel>());
-        lvItems.setAdapter(lodgingAdapter);
+        this.lodgingAdapter = new LodgingAdapter(new ArrayList<LodgingModel>());
+        this.lvItems.setAdapter(lodgingAdapter);
 
-        lodgingsJsonReaderAsyncTask = new LodgingsJsonReaderAsyncTask(this);
-        lodgingsJsonReaderAsyncTask.execute("lodgings.json");
+        new LodgingsJsonReaderAsyncTask(this).execute(getString(R.string.lodgings_data));
     }
 
-    @Override
-    public void onLodgingsJsonReaderPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
-        Log.d(TAG, "onLodgingsJsonReaderPostExecute");
-
-        lodgingAdapter.addAll(lodgingModelArrayList);
-    }
-
+    /**
+     * Required by `AdapterView.OnItemClickListener` interface. Sends clicked list item's data to
+     * the `ItemActivity` as a JSON string.
+     *
+     * @param parent    Adapter view
+     * @param view      View to insert into adapter view
+     * @param position  Item position in adapter view
+     * @param id        Item ID
+     */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Log.d(TAG, "onItemClick");
-
         LodgingModel lodgingModel = (LodgingModel) parent.getItemAtPosition(position);
+        // Object is serialized before being sent
         String json = new Gson().toJson(lodgingModel);
 
-        Log.d(TAG, "Sending: " + json);
-
         Intent intent = new Intent(this, ItemActivity.class);
+        // `LodgingModel` class name is used as identifier
         intent.putExtra(LodgingModel.TAG, json);
         startActivity(intent);
+    }
+
+    /**
+     * Required by `LodgingsJsonReaderAsyncTask.ILodgingsJsonReader` interface. Refreshes adapter
+     * with new list of lodging items.
+     *
+     * @param lodgingModelArrayList List of lodging items
+     */
+    @Override
+    public void onLodgingsJsonReaderPostExecute(ArrayList<LodgingModel> lodgingModelArrayList) {
+        this.lodgingAdapter.addAll(lodgingModelArrayList);
     }
 }

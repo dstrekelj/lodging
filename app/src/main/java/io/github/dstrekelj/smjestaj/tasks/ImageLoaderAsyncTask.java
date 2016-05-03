@@ -15,10 +15,24 @@ import java.io.InputStream;
  * Performs asynchronous loading of an image from the assets folder into an `ImageView`.
  */
 public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
+    /**
+     * Shorthand for the class name. Useful for logging.
+     */
     public static final String TAG = ImageLoaderAsyncTask.class.getSimpleName();
 
+    /**
+     * Reference to context's asset manager.
+     */
     AssetManager assetManager;
+
+    /**
+     * Reference to image view the image is intended for.
+     */
     ImageView imageView;
+
+    /**
+     * Image view tag used to discern different image views.
+     */
     String tag;
 
     /**
@@ -29,8 +43,6 @@ public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
      * @param imageView     Affected `ImageView`
      */
     public ImageLoaderAsyncTask(AssetManager assetManager, ImageView imageView) {
-        Log.d(TAG, "constructor");
-
         this.assetManager = assetManager;
         this.imageView = imageView;
 
@@ -50,8 +62,6 @@ public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
      */
     @Override
     protected Bitmap doInBackground(String... params) {
-        Log.d(TAG, "doInBackground - " + params[0]);
-
         Bitmap bitmap = null;
         InputStream inputStream = null;
 

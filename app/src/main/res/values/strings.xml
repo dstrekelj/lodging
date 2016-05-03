@@ -2,4 +2,5 @@
     <string name="app_name">Smještaj</string>
     <string name="lipsum_short">Lorem ipsum</string>
     <string name="lipsum_newline">Lorem ipsum dolor sit amet.\nIn luctus maximus metus vitae mollis.</string>
+    <string name="lodgings_data">lodgings.json</string>
 </resources>

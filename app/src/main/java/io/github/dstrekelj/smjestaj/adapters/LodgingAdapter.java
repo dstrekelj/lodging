@@ -18,8 +18,14 @@ import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
  * Adapter for `LodgingModel`.
  */
 public class LodgingAdapter extends BaseAdapter {
+    /**
+     * Shorthand for the class name. Useful for logging.
+     */
     public static final String TAG = LodgingAdapter.class.getSimpleName();
 
+    /**
+     * Internal list of lodging items.
+     */
     ArrayList<LodgingModel> lodgingModelArrayList;
 
     /**
@@ -73,8 +79,6 @@ public class LodgingAdapter extends BaseAdapter {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.d(TAG, "getView: " + position);
-
         ItemViewHolder itemViewHolder = null;
         Context context = parent.getContext();
 
