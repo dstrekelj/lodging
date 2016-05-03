@@ -118,37 +118,40 @@ public class ItemActivity extends AppCompatActivity {
 
         // TODO: Optimise the whole "copy-to-storage, scan, and load" process?
 
-        // Get list of files in external files directory and run the media scanner on image click
+        File externalFilesDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        // Only allow gallery behaviour if the external files directory is accessible for reading
+        if (externalFilesDir != null && externalFilesDir.canRead()) {
+            // Get list of files in external files directory and run the media scanner on image click
+            File folder = new File(externalFilesDir.getPath());
+            final File[] files = folder.listFiles();
 
-        File folder = new File(getExternalFilesDir(Environment.DIRECTORY_PICTURES).getPath());
-        final File[] files = folder.listFiles();
+            ivBanner.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new SingleMediaScanner(ItemActivity.this, files[0]);
+                }
+            });
 
-        ivBanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new SingleMediaScanner(ItemActivity.this, files[0]);
-            }
-        });
+            ivGalleryItem1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new SingleMediaScanner(ItemActivity.this, files[1]);
+                }
+            });
 
-        ivGalleryItem1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new SingleMediaScanner(ItemActivity.this, files[1]);
-            }
-        });
+            ivGalleryItem2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new SingleMediaScanner(ItemActivity.this, files[2]);
+                }
+            });
 
-        ivGalleryItem2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new SingleMediaScanner(ItemActivity.this, files[2]);
-            }
-        });
-
-        ivGalleryItem3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                new SingleMediaScanner(ItemActivity.this, files[3]);
-            }
-        });
+            ivGalleryItem3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    new SingleMediaScanner(ItemActivity.this, files[3]);
+                }
+            });
+        }
     }
 }
