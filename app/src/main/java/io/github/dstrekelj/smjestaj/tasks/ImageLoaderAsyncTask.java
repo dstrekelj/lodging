@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 
 import java.io.IOException;
@@ -33,6 +34,8 @@ public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
         this.assetManager = assetManager;
         this.imageView = imageView;
 
+        this.imageView.setVisibility(View.INVISIBLE);
+
         if (imageView.getTag() != null) {
             this.tag = imageView.getTag().toString();
         }
@@ -53,7 +56,7 @@ public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
         InputStream inputStream = null;
 
         try {
-            inputStream = assetManager.open(params[0]);
+            inputStream = this.assetManager.open(params[0]);
             BitmapFactory.Options bitmapFactoryOptions = new BitmapFactory.Options();
             // TODO: Actually calculate the appropriate input sample size
             bitmapFactoryOptions.inSampleSize = 1;
@@ -83,12 +86,11 @@ public class ImageLoaderAsyncTask extends AsyncTask<String, Void, Bitmap> {
      */
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-        Log.d(TAG, "onPostExecute");
-
         // Set image bitmap only if bitmap exists, and tags match or don't exist. This is done so
         // that this task can be used to load images asynchronously outside of a ListView.
-        if (bitmap != null && (imageView.getTag() == null || (imageView.getTag() != null && imageView.getTag().toString().equals(tag)))) {
-            imageView.setImageBitmap(bitmap);
+        if (bitmap != null && (this.imageView.getTag() == null || this.imageView.getTag().toString().equals(this.tag))) {
+            this.imageView.setImageBitmap(bitmap);
+            this.imageView.setVisibility(View.VISIBLE);
         }
 
         // Release reference to image view
