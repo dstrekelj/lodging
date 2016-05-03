@@ -11,7 +11,10 @@
         <item name="android:textSize">@dimen/text_size_p</item>
     </style>
 
-    <style name="RatingBar" parent="Base.Widget.AppCompat.RatingBar.Indicator">
+    <style name="HollowStarRatingBar" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/hollow_star_rating_bar</item>
+        <item name="android:minHeight">@dimen/rating_bar_star_height</item>
+        <item name="android:maxHeight">@dimen/rating_bar_star_height</item>
     </style>
 
 </resources>

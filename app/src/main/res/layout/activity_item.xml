@@ -27,7 +27,7 @@
                 android:id="@+id/activity_item_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                style="@style/RatingBar"
+                style="@style/HollowStarRatingBar"
                 android:isIndicator="true"
                 android:numStars="5"
                 android:rating="4"
@@ -37,30 +37,30 @@
                 android:id="@+id/activity_item_heading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:layout_marginTop="@dimen/activity_item_vertical_margin_small"
                 android:textSize="@dimen/text_size_h1"
                 android:textStyle="bold"
-                android:text="Hotel Osijek"/>
+                android:text="@string/lipsum_short"/>
 
             <TextView
                 android:id="@+id/activity_item_subheading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Šamačka ulica 4\n31000 Osijek"/>
+                android:layout_marginTop="@dimen/activity_item_vertical_margin_small"
+                android:text="@string/lipsum_newline"/>
 
             <TextView
                 android:id="@+id/activity_item_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_vertical_margin"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus maximus metus vitae mollis. Nunc in commodo lorem, quis rutrum lacus. Vestibulum iaculis velit sit amet velit aliquet tincidunt pellentesque in ante. Etiam sit amet arcu id orci elementum sodales. In vehicula, mauris eget tempus feugiat, mi dolor lacinia elit, eu finibus mauris nulla et ipsum. Sed consequat dictum risus vel tristique. Suspendisse eu nisi gravida, scelerisque orci dapibus, viverra nibh. Sed a orci mi. Quisque ornare sit amet mi eu dictum."/>
+                android:layout_marginTop="@dimen/activity_item_vertical_margin_medium"
+                android:text="@string/lipsum_long"/>
 
             <LinearLayout
                 android:id="@+id/activity_item_gallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/activity_padding"
+                android:layout_marginTop="@dimen/activity_item_vertical_margin_large"
                 android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
@@ -69,6 +69,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
+                    android:background="@color/colorDivider"
                     android:scaleType="centerCrop"/>
 
                 <ImageView
@@ -76,8 +77,9 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_item_gallery_item_margin"
+                    android:layout_marginRight="@dimen/activity_item_gallery_item_margin"
+                    android:background="@color/colorDivider"
                     android:scaleType="centerCrop"/>
 
                 <ImageView
@@ -85,6 +87,7 @@
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
+                    android:background="@color/colorDivider"
                     android:scaleType="centerCrop"/>
 
             </LinearLayout>

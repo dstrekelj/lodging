@@ -15,4 +15,11 @@
     <dimen name="activity_main_item_vertical_margin">4dp</dimen>
     <!-- Item Activity -->
     <dimen name="activity_item_banner_height">188dp</dimen>
+    <dimen name="activity_item_vertical_margin_large">16dp</dimen>
+    <dimen name="activity_item_vertical_margin_medium">12dp</dimen>
+    <dimen name="activity_item_vertical_margin_small">8dp</dimen>
+    <dimen name="activity_item_gallery_item_margin">10dp</dimen>
+    <!-- Rating Bar -->
+    <dimen name="rating_bar_star_width">20dp</dimen>
+    <dimen name="rating_bar_star_height">20dp</dimen>
 </resources>

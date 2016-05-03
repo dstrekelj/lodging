@@ -3,4 +3,5 @@
     <string name="lipsum_short">Lorem ipsum</string>
     <string name="lipsum_newline">Lorem ipsum dolor sit amet.\nIn luctus maximus metus vitae mollis.</string>
     <string name="lodgings_data">lodgings.json</string>
+    <string name="lipsum_long">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In luctus maximus metus vitae mollis. Nunc in commodo lorem, quis rutrum lacus. Vestibulum iaculis velit sit amet velit aliquet tincidunt pellentesque in ante. Etiam sit amet arcu id orci elementum sodales. In vehicula, mauris eget tempus feugiat, mi dolor lacinia elit, eu finibus mauris nulla et ipsum. Sed consequat dictum risus vel tristique. Suspendisse eu nisi gravida, scelerisque orci dapibus, viverra nibh. Sed a orci mi. Quisque ornare sit amet mi eu dictum.</string>
 </resources>
