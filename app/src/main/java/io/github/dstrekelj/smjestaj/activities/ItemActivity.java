@@ -1,18 +1,10 @@
 package io.github.dstrekelj.smjestaj.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.media.MediaScannerConnection;
-import android.net.Uri;
 import android.os.Environment;
-import android.provider.ContactsContract;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Gallery;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -21,12 +13,8 @@ import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import io.github.dstrekelj.smjestaj.R;
-import io.github.dstrekelj.smjestaj.adapters.GalleryAdapter;
-import io.github.dstrekelj.smjestaj.fragments.GalleryFragment;
-import io.github.dstrekelj.smjestaj.models.GalleryItemModel;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;
 import io.github.dstrekelj.smjestaj.tasks.ImageLoaderAsyncTask;
 import io.github.dstrekelj.smjestaj.utils.SingleMediaScanner;
@@ -34,8 +22,6 @@ import io.github.dstrekelj.smjestaj.utils.StorageUtil;
 
 public class ItemActivity extends AppCompatActivity {
     public static final String TAG = ItemActivity.class.getSimpleName();
-
-    GalleryFragment galleryFragment;
 
     ImageView ivBanner;
     RatingBar rbRating;
@@ -47,16 +33,12 @@ public class ItemActivity extends AppCompatActivity {
     ImageView ivGalleryItem2;
     ImageView ivGalleryItem3;
 
-    GridView gvGallery;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item);
 
         //Log.d(TAG, Environment.getDataDirectory().toString());
-
-        galleryFragment = (GalleryFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_gallery);
 
         ivBanner = (ImageView) findViewById(R.id.acivity_item_banner);
         rbRating = (RatingBar) findViewById(R.id.activity_item_rating);
@@ -67,8 +49,6 @@ public class ItemActivity extends AppCompatActivity {
         ivGalleryItem1 = (ImageView) findViewById(R.id.activity_item_gallery_item1);
         ivGalleryItem2 = (ImageView) findViewById(R.id.activity_item_gallery_item2);
         ivGalleryItem3 = (ImageView) findViewById(R.id.activity_item_gallery_item3);
-
-        gvGallery = (GridView) findViewById(R.id.fragment_gallery);
 
         Gson gson = new Gson();
         LodgingModel lodgingModel = gson.fromJson(getIntent().getStringExtra(LodgingModel.TAG), LodgingModel.class);
@@ -130,19 +110,5 @@ public class ItemActivity extends AppCompatActivity {
                 new SingleMediaScanner(ItemActivity.this, files[3]);
             }
         });
-
-        ArrayList<GalleryItemModel> galleryItemModelArrayList = new ArrayList<GalleryItemModel>();
-
-        Log.d(TAG, gvGallery.toString());
-
-        if (lodgingModel.getGallery() != null) {
-            for (String image : lodgingModel.getGallery()) {
-                Log.d(TAG, image);
-                galleryItemModelArrayList.add(new GalleryItemModel(image));
-            }
-        }
-
-        GalleryAdapter galleryAdapter = new GalleryAdapter(galleryItemModelArrayList);
-        gvGallery.setAdapter(galleryAdapter);
     }
 }
