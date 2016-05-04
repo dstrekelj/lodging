@@ -1,6 +1,6 @@
 # Smještaj (Lodging)
 
-<img src="1_main_activity.png" width="200px"/> <img src="2_item_activity.png" width="200px"/>
+<p align="center"><img src="1_main_activity.png" width="200px"/> <img src="2_item_activity.png" width="200px"/></p>
 
 _Smještaj_ (_Lodging_) is a straightforward Android application for reviewing lodging options.
 
