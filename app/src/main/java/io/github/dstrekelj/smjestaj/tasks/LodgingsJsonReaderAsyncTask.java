@@ -3,7 +3,6 @@ package io.github.dstrekelj.smjestaj.tasks;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
@@ -40,8 +39,6 @@ public class LodgingsJsonReaderAsyncTask extends AsyncTask<String, Void, ArrayLi
      * @param activity  Context of execution
      */
     public LodgingsJsonReaderAsyncTask(ILodgingsJsonReader activity) {
-        Log.d(TAG, "constructor");
-
         this.activity = activity;
 
         AppCompatActivity context = (AppCompatActivity) activity;

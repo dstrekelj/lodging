@@ -3,7 +3,6 @@ package io.github.dstrekelj.smjestaj.activities;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 import com.google.gson.Gson;
 
 import java.io.File;
-import java.io.IOException;
 
 import io.github.dstrekelj.smjestaj.R;
 import io.github.dstrekelj.smjestaj.models.LodgingModel;

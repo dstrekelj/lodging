@@ -57,8 +57,8 @@ public class StorageUtil {
                     new MediaScannerConnection.OnScanCompletedListener() {
                         @Override
                         public void onScanCompleted(String path, Uri uri) {
-                            Log.d(TAG, "Scanned " + path + ":");
-                            Log.d(TAG, "-> uri=" + uri);
+                            //Log.d(TAG, "Scanned " + path + ":");
+                            //Log.d(TAG, "-> uri=" + uri);
                         }
                     }
             );
